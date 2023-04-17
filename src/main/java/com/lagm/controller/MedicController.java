@@ -7,6 +7,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/medics")
@@ -56,6 +61,13 @@ public class MedicController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/hateoas/{id}")
+    public EntityModel<MedicDTO> findByIdHateoas(@PathVariable("id") Integer id) {
+        EntityModel<MedicDTO> resource = EntityModel.of(this.convertToDto(service.findById(id)));
+        WebMvcLinkBuilder link1 = linkTo(methodOn(this.getClass()).findById(id));
+        resource.add(link1.withRel("patient-info1"));
+        return resource;
+    }
     private MedicDTO convertToDto(Medic obj) {
         return modelMapper.map(obj, MedicDTO.class);
     }
