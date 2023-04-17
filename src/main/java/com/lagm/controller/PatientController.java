@@ -1,30 +1,39 @@
 package com.lagm.controller;
 
+import com.lagm.dto.PatientDTO;
 import com.lagm.model.Patient;
+import com.lagm.service.IPatientService;
 import com.lagm.service.impl.PatientServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/patients")
 @RequiredArgsConstructor
 public class PatientController {
-    private final PatientServiceImpl service;
+    private final IPatientService service;
+
+    private final ModelMapper modelMapper;
 
     @GetMapping
-    public ResponseEntity<List<Patient>> findAll() {
-        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<PatientDTO>> findAll() {
+        List<PatientDTO> patientList = service.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
+        return new ResponseEntity<>(patientList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> findById(@PathVariable("id") Integer id) {
-        return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
+    public ResponseEntity<PatientDTO> findById(@PathVariable("id") Integer id) {
+        return new ResponseEntity<>(this.convertToDto(service.findById(id)), HttpStatus.OK);
     }
 
     /*@PostMapping
@@ -32,22 +41,30 @@ public class PatientController {
         return new ResponseEntity<>(service.save(patient), HttpStatus.CREATED);
     }*/
     @PostMapping
-    public ResponseEntity<Void> save(@RequestBody Patient patient) {
-        Patient createdPatient = service.save(patient);
+    public ResponseEntity<Void> save(@RequestBody PatientDTO patientDTO) {
+        Patient createdPatient = service.save(this.convertToEntity(patientDTO));
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdPatient.getIdPatient()).toUri();
         return ResponseEntity.created(location).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Patient> update(@PathVariable("id") Integer id, @RequestBody Patient patient) {
-        patient.setIdPatient(id);
-        Patient updatedPatient = service.update(patient, id);
-        return new ResponseEntity<>(updatedPatient, HttpStatus.OK);
+    public ResponseEntity<PatientDTO> update(@PathVariable("id") Integer id, @RequestBody PatientDTO patientDTO) {
+        patientDTO.setIdPatient(id);
+        Patient updatedPatient = service.update(this.convertToEntity(patientDTO), id);
+        return new ResponseEntity<>(this.convertToDto(updatedPatient), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    private PatientDTO convertToDto(Patient obj) {
+        return modelMapper.map(obj, PatientDTO.class);
+    }
+
+    private Patient convertToEntity(PatientDTO dto) {
+        return modelMapper.map(dto, Patient.class);
     }
 }
