@@ -65,7 +65,7 @@ public class MedicController {
     public EntityModel<MedicDTO> findByIdHateoas(@PathVariable("id") Integer id) {
         EntityModel<MedicDTO> resource = EntityModel.of(this.convertToDto(service.findById(id)));
         WebMvcLinkBuilder link1 = linkTo(methodOn(this.getClass()).findById(id));
-        resource.add(link1.withRel("patient-info1"));
+        resource.add(link1.withRel("medic-info1"));
         return resource;
     }
     private MedicDTO convertToDto(Medic obj) {
