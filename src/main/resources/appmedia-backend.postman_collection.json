@@ -106,79 +106,55 @@
 			]
 		},
 		{
-			"name": "findAll",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/patients",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"patients"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "findById",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/patients/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"patients",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "save",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"\",\n    \"lastName\": \"Guisado\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "patients",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/patients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"patients"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8081/patients",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"patients"
-					]
-				}
-			},
-			"response": [
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/patients/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"patients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "save",
-					"originalRequest": {
+					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"Luis\",\n    \"lastName\": \"Guisado\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
+							"raw": "{\n    \"firstName\": \"\",\n    \"lastName\": \"Guisado\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -197,19 +173,79 @@
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
-					"cookie": [],
-					"body": null
+					"response": [
+						{
+							"name": "save",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Luis\",\n    \"lastName\": \"Guisado\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/patients",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"patients"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "save",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Lourdes\",\n    \"lastName\": \"Rivera\",\n    \"dni\": \"45587451\",\n    \"address\": \"Jr Los Amatistas 964\",\n    \"phone\": \"999854845\",\n    \"email\": \"lourdes@mail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/patients",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"patients"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
 				},
 				{
-					"name": "save",
-					"originalRequest": {
-						"method": "POST",
+					"name": "update",
+					"request": {
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"Lourdes\",\n    \"lastName\": \"Rivera\",\n    \"dni\": \"45587451\",\n    \"address\": \"Jr Los Amatistas 964\",\n    \"phone\": \"999854845\",\n    \"email\": \"lourdes@mail.com\"\n}",
+							"raw": "{\n    \"firstName\": \"LuisX\",\n    \"lastName\": \"GuisadoX\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -217,72 +253,225 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/patients",
+							"raw": "http://localhost:8081/patients/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
-								"patients"
+								"patients",
+								"10"
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
-					"cookie": [],
-					"body": null
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/patients/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"patients",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "update",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"LuisX\",\n    \"lastName\": \"GuisadoX\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "medics",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/medics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"medics"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8081/patients/10",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"patients",
-						"10"
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/medics/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"medics",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"primaryName\": \"Octavius\",\n    \"surname\": \"Octopus\",\n    \"cmpMedic\": \"158742\",\n    \"photo\": \"https://variety.com/wp-content/uploads/2021/04/Alfred-Molina-Doctor-Octopus-Spiderman.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/medics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"medics"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "save",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Luis\",\n    \"lastName\": \"Guisado\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/patients",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"patients"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "save",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Lourdes\",\n    \"lastName\": \"Rivera\",\n    \"dni\": \"45587451\",\n    \"address\": \"Jr Los Amatistas 964\",\n    \"phone\": \"999854845\",\n    \"email\": \"lourdes@mail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/patients",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"patients"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
 					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"LuisX\",\n    \"lastName\": \"GuisadoX\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/medics/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"medics",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/medics/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"medics",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/patients/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"patients",
-						"1"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }
