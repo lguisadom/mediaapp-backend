@@ -4,6 +4,7 @@ import com.lagm.dto.PatientDTO;
 import com.lagm.model.Patient;
 import com.lagm.service.IPatientService;
 import com.lagm.service.impl.PatientServiceImpl;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,14 +42,14 @@ public class PatientController {
         return new ResponseEntity<>(service.save(patient), HttpStatus.CREATED);
     }*/
     @PostMapping
-    public ResponseEntity<Void> save(@RequestBody PatientDTO patientDTO) {
+    public ResponseEntity<Void> save(@Valid @RequestBody PatientDTO patientDTO) {
         Patient createdPatient = service.save(this.convertToEntity(patientDTO));
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdPatient.getIdPatient()).toUri();
         return ResponseEntity.created(location).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PatientDTO> update(@PathVariable("id") Integer id, @RequestBody PatientDTO patientDTO) {
+    public ResponseEntity<PatientDTO> update(@Valid @PathVariable("id") Integer id, @RequestBody PatientDTO patientDTO) {
         patientDTO.setIdPatient(id);
         Patient updatedPatient = service.update(this.convertToEntity(patientDTO), id);
         return new ResponseEntity<>(this.convertToDto(updatedPatient), HttpStatus.OK);

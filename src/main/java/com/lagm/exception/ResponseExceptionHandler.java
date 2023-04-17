@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
@@ -50,6 +51,11 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-        return super.handleMethodArgumentNotValid(ex, headers, status, request);
+        String message = ex.getBindingResult().getAllErrors().stream().map(
+                e -> e.getCode().concat(":").concat(e.getDefaultMessage())
+        ).collect(Collectors.joining());
+
+        CustomerErrorResponse err = new CustomerErrorResponse(LocalDateTime.now(), message, request.getDescription(false));
+        return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
     }
 }
