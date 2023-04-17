@@ -1,5 +1,6 @@
 package com.lagm.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +33,8 @@ public class ConsultDTO {
     @NotNull
     private LocalDateTime consultDate;
 
+    @JsonManagedReference
+    @NotNull
     private List<ConsultDetailDTO> details;
 
 }

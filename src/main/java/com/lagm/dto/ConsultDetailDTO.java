@@ -1,5 +1,6 @@
 package com.lagm.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +15,7 @@ public class ConsultDetailDTO {
     @EqualsAndHashCode.Include
     private Integer idDetail;
 
+    @JsonBackReference
     private ConsultDTO consult;
 
     @NotNull
