@@ -7,6 +7,105 @@
 	},
 	"item": [
 		{
+			"name": "locale",
+			"item": [
+				{
+					"name": "changeLocale",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/languages/locale/es",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"languages",
+								"locale",
+								"es"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "es",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/languages/locale/es",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"languages",
+										"locale",
+										"es"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "en",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/languages/locale/en",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"languages",
+										"locale",
+										"en"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "fr",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/languages/locale/fr",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"languages",
+										"locale",
+										"fr"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "findAll",
 			"request": {
 				"method": "GET",
@@ -52,7 +151,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"Luis\",\n    \"lastName\": \"Guisado\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
+					"raw": "{\n    \"firstName\": \"\",\n    \"lastName\": \"Guisado\",\n    \"dni\": \"46687134\",\n    \"address\": \"Jr Los Zafiros 2019\",\n    \"phone\": \"963212124\",\n    \"email\": \"luis@mail.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -151,7 +250,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8081/patients/1",
+					"raw": "http://localhost:8081/patients/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -159,7 +258,7 @@
 					"port": "8081",
 					"path": [
 						"patients",
-						"1"
+						"10"
 					]
 				}
 			},
@@ -171,7 +270,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8081/patients/3",
+					"raw": "http://localhost:8081/patients/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -179,7 +278,7 @@
 					"port": "8081",
 					"path": [
 						"patients",
-						"3"
+						"1"
 					]
 				}
 			},
