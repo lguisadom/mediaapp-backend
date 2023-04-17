@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MedicDTO {
+    @EqualsAndHashCode.Include
     private Integer idMedic;
 
     @NotNull

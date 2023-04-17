@@ -15,7 +15,7 @@ public class Exam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Integer idExamen;
+    private Integer idExam;
 
     @Column(nullable = false, length = 50)
     private String name;
