@@ -14,7 +14,6 @@ public class PatientDTO {
     @EqualsAndHashCode.Include
     private Integer idPatient;
 
-
     @NotNull
     @Size(min = 3, message = "{firstname.size}")
     private String firstName;

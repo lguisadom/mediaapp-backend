@@ -1,11 +1,14 @@
 package com.lagm.controller;
 
 import com.lagm.dto.ConsultDTO;
+import com.lagm.dto.ConsultListExamDTO;
 import com.lagm.model.Consult;
+import com.lagm.model.Exam;
 import com.lagm.service.IConsultService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -41,9 +44,18 @@ public class ConsultController {
         return new ResponseEntity<>(this.convertToDto(service.findById(id)), HttpStatus.OK);
     }
 
-    @PostMapping
+    /*@PostMapping
     public ResponseEntity<Void> save(@Valid @RequestBody ConsultDTO consultDTO) {
         Consult createdConsult = service.save(this.convertToEntity(consultDTO));
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdConsult.getIdConsult()).toUri();
+        return ResponseEntity.created(location).build();
+    }*/
+    @PostMapping
+    public ResponseEntity<Void> save(@Valid @RequestBody ConsultListExamDTO dto) {
+        Consult consult = this.convertToEntity(dto.getConsult());
+        // List<Exam> exams = dto.getLstExam().stream().map(e -> modelMapper.map(e, Exam.class)).collect(Collectors.toList());
+        List<Exam> exams = modelMapper.map(dto.getLstExam(), new TypeToken<List<Exam>>(){}.getType()); // Lombok: DTO List -> Entity List
+        Consult createdConsult = service.saveTransactional(consult, exams);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdConsult.getIdConsult()).toUri();
         return ResponseEntity.created(location).build();
     }
