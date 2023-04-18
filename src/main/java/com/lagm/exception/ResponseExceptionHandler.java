@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<CustomerErrorResponse> handleAllException(ModelNotFoundException ex, WebRequest request) {
+    public ResponseEntity<CustomerErrorResponse> handleAllException(Exception ex, WebRequest request) {
         CustomerErrorResponse err = new CustomerErrorResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(err, HttpStatus.INTERNAL_SERVER_ERROR);
     }
